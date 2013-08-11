@@ -1,6 +1,6 @@
 # HandyFeatureHelpers
 
-TODO: Write a gem description
+Feature helpers for use with Capybara and Rspec
 
 ## Installation
 
@@ -12,9 +12,11 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+Add to your spec_helper.rb: 
 
-    $ gem install handy_feature_helpers
+	RSpec.configure do |config|
+      config.include HandyFeatureHelpers::Helpers, type: :feature
+	end
 
 ## Usage
 
