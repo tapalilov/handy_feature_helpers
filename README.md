@@ -5,18 +5,20 @@ Feature helpers for use with Capybara and Rspec
 ## Installation
 
 Add this line to your application's Gemfile:
-
-    gem 'handy_feature_helpers'
+```ruby
+gem 'handy_feature_helpers'
+```
 
 And then execute:
 
     $ bundle
 
 Add to your spec_helper.rb: 
-
-	RSpec.configure do |config|
-      config.include HandyFeatureHelpers::Helpers, type: :feature
-	end
+```ruby
+RSpec.configure do |config|
+  config.include HandyFeatureHelpers::Helpers, type: :feature
+end
+```
 
 ## Usage
 
