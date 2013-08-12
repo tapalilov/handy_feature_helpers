@@ -1,5 +1,5 @@
 module HandyFeatureHelpers
-  module Helpers
+  module MainHelpers
 
     @@resource = ''
     @@resource_plural = ''
