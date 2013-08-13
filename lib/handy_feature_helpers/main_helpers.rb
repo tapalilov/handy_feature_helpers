@@ -1,3 +1,5 @@
+require 'capybara'
+
 module HandyFeatureHelpers
   module MainHelpers
 
@@ -66,21 +68,13 @@ module HandyFeatureHelpers
     end
 
     def accept_alert
-      page.driver.browser.switch_to.alert.accept
+      if Capybara.javascript_driver == 'selenium'
+        page.driver.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
+      end
     end
 
     def size_of(selector)
       page.all(selector).size
-    end
-
-    def wait_until_visible(selector)
-      wait_for_ajax
-      wait_until { find(selector).visible? }
-    end
-
-    def wait_until_invisible(selector)
-      wait_for_ajax
-      wait_until { !page.find(selector).visible? }
     end
 
     def visible?(selector)
@@ -99,31 +93,34 @@ module HandyFeatureHelpers
       find("option[value='#{resource.id}']").click
     end
 
+    def has_content?(text)
+      expect(page).to have_content(text)
+    end
+
+    def has_no_content?(text)
+      expect(page).to have_no_content(text)
+    end
+
     def ensure_delete_is_working
       tr_count = size_of table_rows
       within(table) { click delete_link }
-
       accept_alert
-
-      wait_until { size_of(table_rows) == tr_count - 1 }
+      size_of(table_rows) == tr_count - 1
     end
 
     def ensure_cancel_creating_is_working
       click cancel_link
 
-      wait_for_ajax
-
       invisible? form
       click new_link
 
-      wait_for_ajax
       visible? submit
       invisible? new_link
     end
 
     def ensure_cancel_modal_is_working
       click cancel_link
-      wait_until_invisible modal
+      invisible? modal
     end
 
     def has_validations?
