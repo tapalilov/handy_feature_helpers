@@ -106,7 +106,7 @@ module HandyFeatureHelpers
     end
 
     def table_has_no_content?(text)
-      within(table) { has_content?(text) }
+      within(table) { has_no_content?(text) }
     end
 
     def ensure_delete_is_working
