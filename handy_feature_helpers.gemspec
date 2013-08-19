@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = HandyFeatureHelpers::VERSION
   spec.authors       = ["Vassil Kalkov"]
   spec.email         = ["vassilkalkov@gmail.com"]
-  spec.description   = %q{Feature helpers for use with Capybara}
+  spec.description   = %q{Feature helpers for use with Capybara and Rspec}
   spec.summary       = %q{Feature spec helpers}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/kalkov/handy_feature_helpers"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'capybara'
+  spec.add_dependency 'capybara', '~> 2.0.0'
   spec.add_dependency 'rspec'
 
   spec.add_development_dependency "bundler", "~> 1.3"
