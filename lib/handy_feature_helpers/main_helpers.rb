@@ -136,6 +136,10 @@ module HandyFeatureHelpers
       page.should have_content "can't be blank"
     end
 
+    def count?(count)
+      within(count_div) { has_content? count }
+    end
+
     private
 
     def plural(text)
