@@ -89,6 +89,10 @@ module HandyFeatureHelpers
       find(selector).click
     end
 
+    def click_text(text)
+      find('a',:text => text).click
+    end
+
     def click_option(resource)
       find("option[value='#{resource.id}']").click
     end
@@ -138,6 +142,10 @@ module HandyFeatureHelpers
 
     def count?(count)
       within(count_div) { has_content? count }
+    end
+
+    def current_path?(path)
+      expect(current_path).to eq path
     end
 
     private
