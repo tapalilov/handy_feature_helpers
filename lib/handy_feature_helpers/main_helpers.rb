@@ -55,6 +55,10 @@ module HandyFeatureHelpers
       '.edit-link'
     end
 
+    def js_edit_link
+      '.js-edit-link'
+    end
+
     def show_link
       '.show-link'
     end
