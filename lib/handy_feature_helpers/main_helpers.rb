@@ -89,6 +89,10 @@ module HandyFeatureHelpers
       find(selector).click
     end
 
+    def click_text(text)
+      find('a',:text => text).click
+    end
+
     def click_option(resource)
       find("option[value='#{resource.id}']").click
     end
@@ -106,7 +110,7 @@ module HandyFeatureHelpers
     end
 
     def table_has_no_content?(text)
-      within(table) { has_content?(text) }
+      within(table) { has_no_content?(text) }
     end
 
     def ensure_delete_is_working
@@ -134,6 +138,14 @@ module HandyFeatureHelpers
     def has_validations?
       click submit
       page.should have_content "can't be blank"
+    end
+
+    def count?(count)
+      within(count_div) { has_content? count }
+    end
+
+    def current_path?(path)
+      expect(current_path).to eq path
     end
 
     private
