@@ -21,6 +21,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'capybara', '~> 2.1.0'
   spec.add_dependency 'rspec'
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
 end
