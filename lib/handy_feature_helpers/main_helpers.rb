@@ -72,9 +72,7 @@ module HandyFeatureHelpers
     end
 
     def accept_alert
-      if Capybara.javascript_driver == 'selenium'
-        page.driver.switch_to.alert.accept rescue Selenium::WebDriver::Error::NoAlertOpenError
-      end
+      page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist
     end
 
     def size_of(selector)
